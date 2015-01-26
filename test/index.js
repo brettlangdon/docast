@@ -59,5 +59,18 @@ describe('docast', function(){
             assert.deepEqual(class2_method1.returns, []);
             assert.deepEqual(class2_method1.raises, []);
         });
+
+        it('should properly parse ./fixture/test2.js', function(){
+            var comments = docast.parse(__dirname + '/fixture/test2.js');
+
+            assert.equal(comments.length, 1);
+
+            var some = comments[0];
+            assert.ok(~some.doc.indexOf('This function is super cool and does all sorts of cool stuffs'));
+            assert.equal(some.name, 'some');
+            assert.deepEqual(some.params, ['cool', 'stuff']);
+            assert.deepEqual(some.returns, ['stuff', 'cool', null]);
+            assert.deepEqual(some.raises, ['Exception']);
+        });
     });
 });
