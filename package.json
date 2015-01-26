@@ -4,7 +4,7 @@
   "description": "Generate JS documentation via AST parsing",
   "main": "lib/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node_modules/.bin/mocha ./test"
   },
   "repository": {
     "type": "git",
@@ -18,5 +18,8 @@
   "homepage": "https://github.com/brettlangdon/docast",
   "dependencies": {
     "esprima": "^1.2.3"
+  },
+  "devDependencies": {
+    "mocha": "^2.1.0"
   }
 }
