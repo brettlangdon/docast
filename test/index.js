@@ -19,7 +19,7 @@ describe('docast', function(){
             assert.ok(~func1.doc.indexOf('func1'));
             assert.equal(func1.name, 'func1');
             assert.deepEqual(func1.params, ['arg1', 'arg2']);
-            assert.deepEqual(func1.returns, ['string']);
+            assert.deepEqual(func1.returns, ['\'string\'']);
             assert.deepEqual(func1.raises, ['Exception']);
 
             var func2 = comments[2];
@@ -69,8 +69,21 @@ describe('docast', function(){
             assert.ok(~some.doc.indexOf('This function is super cool and does all sorts of cool stuffs'));
             assert.equal(some.name, 'some');
             assert.deepEqual(some.params, ['cool', 'stuff']);
-            assert.deepEqual(some.returns, ['stuff', 'cool', null]);
+            assert.deepEqual(some.returns, ['stuff', 'cool', 'null']);
             assert.deepEqual(some.raises, ['Exception']);
+        });
+
+        it('should properly parse ./fixture/test3.js', function(){
+            var comments = docast.parse(__dirname + '/fixture/test3.js');
+
+            assert.equal(comments.length, 1);
+
+            var raises = comments[0];
+            assert.ok(~raises.doc.indexOf('This function will raise some exceptions'));
+            assert.equal(raises.name, 'raises');
+            assert.deepEqual(raises.params, []);
+            assert.deepEqual(raises.returns, []);
+            assert.deepEqual(raises.raises, ['Error', '\'string\'', 'e', 'true', 'CustomError', 'CustomError']);
         });
     });
 });
