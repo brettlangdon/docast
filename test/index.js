@@ -20,7 +20,7 @@ describe('docast', function(){
             assert.equal(func1.name, 'func1');
             assert.deepEqual(func1.params, ['arg1', 'arg2']);
             assert.deepEqual(func1.returns, ['\'string\'']);
-            assert.deepEqual(func1.raises, ['Exception']);
+            assert.deepEqual(func1.raises, ['Error']);
 
             var func2 = comments[2];
             assert.ok(~func2.doc.indexOf('func2'));
@@ -70,7 +70,7 @@ describe('docast', function(){
             assert.equal(some.name, 'some');
             assert.deepEqual(some.params, ['cool', 'stuff']);
             assert.deepEqual(some.returns, ['stuff', 'cool', 'null']);
-            assert.deepEqual(some.raises, ['Exception']);
+            assert.deepEqual(some.raises, ['Error']);
         });
 
         it('should properly parse ./fixture/test3.js', function(){
