@@ -1,0 +1,16 @@
+doctype html
+html
+body
+ h1 DocAST Documentation
+ each comment in comments
+  h3=comment.name + '(' + comment.params.join(', ') + ')'
+  pre=comment.doc.comment
+  h5 Params
+  ul
+   each param in comment.doc.params
+    li=param.name + ' [' + param.type + ']'
+     pre=param.comment
+  h5 Returns
+  ul
+   li='[' + comment.doc.returns.type + ']'
+    pre=comment.doc.returns.comment
