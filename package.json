@@ -1,5 +1,5 @@
 {
-  "name": "DocAST",
+  "name": "docast",
   "version": "0.1.0",
   "description": "Generate JS documentation via AST parsing",
   "main": "lib/index.js",
