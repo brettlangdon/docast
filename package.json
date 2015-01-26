@@ -17,9 +17,13 @@
   },
   "homepage": "https://github.com/brettlangdon/docast",
   "dependencies": {
+    "docopt": "^0.4.1",
     "esprima": "^1.2.3"
   },
   "devDependencies": {
     "mocha": "^2.1.0"
+  },
+  "bin": {
+    "docast": "bin/docast"
   }
 }

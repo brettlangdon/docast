@@ -1,0 +1,40 @@
+#!/usr/bin/env node
+var docast = require('docast');
+var docopt = require('docopt');
+var fs = require('fs');
+var path = require('path');
+
+var doc = [
+    'Usage:',
+    '  docast (-h | --help)',
+    '  docast (-v | --version)',
+    '  docast extract [-o <output>] <input_files>...',
+    '  docast generate <formatter> <input_files>...',
+    '',
+    'Options:',
+    '  -h --help               Show this help text',
+    '  -v --version            Show docast version information',
+    'Extract:',
+    '  Parse docs from javascript files and output as json to a file',
+    '  -o --output <output>    File to output to [default: out.json]',
+    '  <input_files>           List of javascript files to fetch docs from',
+    'Generate:',
+    '  Provide a script used to generate documentation from the parsed docs',
+    '  <formatter>             Script which exports a `function(comments)` used to generate docs from comments',
+    '  <input_files>           List of javascript files to fetch docs from',
+].join('\r\n');
+
+var args = docopt.docopt(doc, {version: require('../package.json').version});
+
+var comments = [];
+args['<input_files>'].forEach(function(file){
+    comments = comments.concat(docast.parse(file));
+});
+
+if(args.extract){
+    fs.writeFileSync(args['--output'], JSON.stringify(comments));
+} else if(args.generate){
+    var loc = path.join(process.cwd(), args['<formatter>']);
+    var formatter = require(loc);
+    formatter(comments);
+}
