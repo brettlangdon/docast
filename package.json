@@ -1,0 +1,22 @@
+{
+  "name": "DocAST",
+  "version": "0.1.0",
+  "description": "Generate JS documentation via AST parsing",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/brettlangdon/docast.git"
+  },
+  "author": "Brett Langdon <brett@blangdon.com> (http://brett.is)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/brettlangdon/docast/issues"
+  },
+  "homepage": "https://github.com/brettlangdon/docast",
+  "dependencies": {
+    "esprima": "^1.2.3"
+  }
+}
