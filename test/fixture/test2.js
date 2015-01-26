@@ -3,7 +3,7 @@
  */
 function some(cool, stuff){
     if(typeof cool === undefined || typeof stuff === undefined){
-        throw new Exception('must provide "cool" or "stuff" parameter');
+        throw new Error('must provide "cool" or "stuff" parameter');
     }
 
     if(cool > stuff){

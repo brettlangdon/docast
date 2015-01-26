@@ -6,7 +6,7 @@
      * func1
      */
     function func1(arg1, arg2){
-        throw new Exception('hello');
+        throw new Error('hello');
         return 'string';
     }
 
