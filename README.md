@@ -49,7 +49,7 @@ Generate:
 ### Extract
 ```
 $ docast extract -o out.json ./lib/*.js
-$ cat out.js
+$ cat out.json
 [{"name":"func1","params":[],"returns":[],"raises":[],"doc":"this is func1"}, ...]
 ```
 
